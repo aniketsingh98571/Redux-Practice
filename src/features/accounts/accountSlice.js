@@ -1,7 +1,8 @@
 const initialStateAccount = {
     balance:0,
     loan:0,
-    loanPurpose:''
+    loanPurpose:'',
+    currency:'USD'
 }
 
 //reducer in redux
@@ -27,9 +28,13 @@ function accountReducer(state=initialStateAccount,action){
 }
 
 //action creator functions in redux
-function deposit(amount){
+function deposit(amount,currency){
     //returns actions to reducer function
-    return {type:'account/deposit',payload:amount}
+    if(currency==='USD')
+        return {type:'account/deposit',payload:amount,currency:currency}
+    return function(dispatch,getState){
+        
+    }
 }
 function withdraw(amount){
   return  {type:'account/withdraw',payload:amount}
