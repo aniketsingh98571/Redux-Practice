@@ -25,7 +25,8 @@ function AccountOperations() {
   function handleRequestLoan() {
     if(!loanPurpose||!loanAmount)
       return
-    dispatch(requestLoan(loanAmount,loanPurpose))
+    //in RTK, the reducer takes only one argument for the values, so u have to wrap ur values in a object
+    dispatch(requestLoan({amount:loanAmount,purpose:loanPurpose}))
   }
 
   function handlePayLoan() {
