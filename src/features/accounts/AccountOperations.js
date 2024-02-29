@@ -7,7 +7,7 @@ function AccountOperations() {
   const [loanAmount, setLoanAmount] = useState("");
   const [loanPurpose, setLoanPurpose] = useState("");
   const [currency, setCurrency] = useState("USD");
-  const{loan,balance,loanPurpose:loanReason} = useSelector(store=>store.account)
+  const{loan} = useSelector(store=>store.account)
   const dispatch=useDispatch()
   function handleDeposit() {
     if(!depositAmount)

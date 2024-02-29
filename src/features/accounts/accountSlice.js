@@ -32,8 +32,14 @@ function deposit(amount,currency){
     //returns actions to reducer function
     if(currency==='USD')
         return {type:'account/deposit',payload:amount,currency:currency}
-    return function(dispatch,getState){
-        
+    return async function(dispatch,getState){
+        //API call
+       const host='api.frankfurter.app'
+        const res=await fetch(`https://${host}/latest?amount=${amount}&from=${currency}&to=USD`)
+        const data=await res.json()
+        console.log(data)
+        const converted=data.rates.USD
+        dispatch({type:'account/deposit',payload:converted,currency:currency})
     }
 }
 function withdraw(amount){
